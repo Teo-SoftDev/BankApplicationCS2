@@ -9,7 +9,8 @@ import java.sql.Date;
 @Getter
 @NoArgsConstructor
 
-public class Person {
+public abstract class Person {
+
     private long id;
     private String name;
     private String document;
@@ -17,5 +18,5 @@ public class Person {
     private String phone;
     private Date birthDate;
     private String address;
-
+    
 }
