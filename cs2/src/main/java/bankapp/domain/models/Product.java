@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public abstract class Product {
-    private String productID;
-    private String ProductName;
+    private String productId;
+    private String productName;
     private ProdCategory productCategory;
     private boolean approval;
 }
