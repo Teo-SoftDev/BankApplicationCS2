@@ -1,5 +1,6 @@
 package bankapp.domain.models;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import lombok.Setter;
@@ -14,9 +15,9 @@ public class Loan extends Product{
     private long loanId;
     private LoanType loanType;
     private Client requestingClient;
-    private double requestedAmount;
-    private double approvedAmount;
-    private double interestRate;
+    private BigDecimal requestedAmount;
+    private BigDecimal approvedAmount;
+    private BigDecimal interestRate;
     private int termInMonths;
     private LoanState loanState;
     private Date approvalDate;

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Map;
 
 
 @Setter
@@ -13,9 +14,9 @@ import java.util.Date;
 
 public class Binnacle {
     private long binnacleId;
-    private String operationType;
+    private OperationType operationType;
     private Date operationDate;
     private User userId;
     private Product productId;
-    private String details;
+    private Map<String, Object> details;
 }

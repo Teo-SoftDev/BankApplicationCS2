@@ -4,7 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -14,8 +15,8 @@ public class Account extends Product{
     private String accountNumber;
     private AccountType accountType;
     private Client holder;
-    private double currentBalance;
+    private BigDecimal currentBalance;
     private Currency currencyType;
     private AccountState accountState;
-    private Date openingDate;
+    private LocalDate openingDate;
 }

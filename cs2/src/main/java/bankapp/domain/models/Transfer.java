@@ -1,6 +1,7 @@
 package bankapp.domain.models;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,10 +13,10 @@ import lombok.NoArgsConstructor;
 
 public class Transfer{
     private long idTransfer;
-    private Account OriginAccount;
-    private Account DestinationAccount;
-    private double amount;
-    private Date creationDate;
-    private Date approvalDate;
-    private LoanState loanState;
+    private Account originAccount;
+    private Account destinationAccount;
+    private BigDecimal amount;
+    private LocalDate creationDate;
+    private LocalDate approvalDate;
+    private TransferState transferState;
 }

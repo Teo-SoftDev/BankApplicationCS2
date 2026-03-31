@@ -3,7 +3,7 @@ package bankapp.domain.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -16,7 +16,7 @@ public abstract class Person {
     private String document;
     private String email;
     private String phone;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String address;
     
 }
