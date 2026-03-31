@@ -12,7 +12,7 @@ Software Construction II
 - Jhorman Bolivar Cañaveral [@BoliDev](https://github.com/BolivarJ)
 - Ximena Correa Correa [@Ximena1433](https://github.com/Ximena1433)
 
-## 🎮🕹️👾 Team Name 🎮🕹️👾
+## 🎮🕹️👾 Team Name 👾🕹️🎮
 Team Rocket
 
 
