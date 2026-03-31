@@ -11,7 +11,10 @@ public class CreateClient {
     public void createClient(Client client) throws BusinessException {
 
         if (clientPort.existsByDocument(client.getDocument())) {
-            throw new BusinessException("Client already exists");
+            throw new BusinessException("There is already a client with that document.");
+        }
+        if (clientPort.existsByEmail(client.getEmail())) {
+            throw new BusinessException("There is already a client with that email.");
         }
 
         clientPort.saveClient(client);
