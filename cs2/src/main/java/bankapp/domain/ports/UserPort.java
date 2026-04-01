@@ -8,6 +8,6 @@ public interface UserPort {
     // CRUD
     public void saveUser(User user);
     public void updateUser(User user);
-    public User findByDocument(User user);
-    public void deleteUser(User user);
+    public User findByDocument(String document);
+    public void deleteUser(String document);
 }
