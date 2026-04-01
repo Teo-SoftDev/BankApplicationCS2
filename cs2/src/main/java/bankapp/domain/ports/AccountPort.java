@@ -9,7 +9,7 @@ public interface AccountPort {
     
     public void saveAccount(Account account);
     public void updateAccountBalance(Account account);
-    public void updateAccountState(String accountNumber, AccountState accountState);
+    public void updateAccountState(Account account);
     public Account findAccountByAccountNumber(String accountNumber);
 
 }
