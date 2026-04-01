@@ -10,6 +10,6 @@ public interface ClientPort {
     // CRUD
     public void saveClient(Client client);
     public void updateClient(Client client);
-    public Client findByDocument(Client client);
-    public void deleteClient(Client client);
+    public Client findByDocument(String document);
+    public void deleteClient(String document);
 }
