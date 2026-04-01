@@ -1,7 +1,6 @@
 package bankapp.domain.services;
 
 import bankapp.domain.Exceptions.BusinessException;
-import bankapp.domain.models.Client;
 import bankapp.domain.ports.ClientPort;
 
 public class DeleteClient {
