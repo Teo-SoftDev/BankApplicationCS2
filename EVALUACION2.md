@@ -1,7 +1,7 @@
-﻿# EVALUACION 2 - BankApplicationCS2
+﻿# EVALUACION 2 - ConstruccionDeSoftware2-MateoGuisao
 
 ## Informacion general
-- Estudiante(s): Integrantes no informados en README.md
+- Estudiante(s): Mateo Guisao Florez, Jhorman Bolivar Canaveral, Ximena Correa Correa
 - Rama evaluada: develop
 - Commit evaluado: 5ffdda3d (origin/develop, commit mas reciente del estudiante tras revisar todas las ramas)
 - Fecha: 2026-04-11
@@ -23,7 +23,7 @@
 | **SUBTOTAL** | 100% | | **2.45** |
 
 ### Calculo
-Nota base = Î£((puntaje_i / 5) * peso_i) / 20 = 49 / 20 = **2.45**
+Nota base = Σ((puntaje_i / 5) * peso_i) / 20 = 49 / 20 = **2.45**
 
 ### Penalizaciones aplicadas
 Ninguna penalizacion mayor aplicable. No hay JPA en domain, no hay codigo en espanol, no hay estados criticos en String.
@@ -67,5 +67,6 @@ Ninguna penalizacion mayor aplicable. No hay JPA en domain, no hay codigo en esp
 5. Agregar servicios de prestamo: CreateLoan, ApproveLoan, RejectLoan, DisburseLoan con transiciones de estado.
 6. Corregir firmas de puertos: `findByDocument(String document)` en lugar de `findByDocument(Client client)`.
 7. Incorporar nombres de integrantes en README.md.
+
 
 
