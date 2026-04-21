@@ -1,7 +1,6 @@
 package bankapp.domain.ports;
 
 import bankapp.domain.models.Account;
-import bankapp.domain.models.AccountState;
 
 public interface AccountPort {
 
