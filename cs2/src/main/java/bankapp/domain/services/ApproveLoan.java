@@ -12,11 +12,11 @@ public class ApproveLoan {
         Loan loan = loanPort.findById(loanId);
 
         if (loan == null) {
-            throw new BusinessException("There's no loan with that id.")
+            throw new BusinessException("There's no loan with that id.");
         }
 
         if (!loan.getLoanState().equals(LoanState.INSTUDY)) {
-            throw new BusinessException("Invalid status.")
+            throw new BusinessException("Invalid status.");
         }
 
         loan.setLoanState(LoanState.APPROVED);

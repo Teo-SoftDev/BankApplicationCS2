@@ -3,9 +3,8 @@ package bankapp.domain.services;
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.LoanPort;
 import bankapp.domain.models.Loan;
-import bankapp.domain.models.Client;
 
-public class CreateUser {
+public class CreateLoan {
     private LoanPort loanPort;
 
     public void createLoan(Loan loan) throws BusinessException{

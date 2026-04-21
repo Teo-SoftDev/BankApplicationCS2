@@ -12,7 +12,7 @@ public class FindTransfer {
         Transfer transfer = transferPort.findById(idTransfer);
 
         if (transfer == null) {
-            throw new BusinessException("There's no transfer with that id.")
+            throw new BusinessException("There's no transfer with that id.");
         }
 
         return transfer;

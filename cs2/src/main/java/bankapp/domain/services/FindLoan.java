@@ -4,7 +4,7 @@ import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.LoanPort;
 import bankapp.domain.models.Loan;
 
-public class FindClient {
+public class FindLoan {
     private LoanPort loanPort;
 
     public Loan findById(long loanId) throws BusinessException {

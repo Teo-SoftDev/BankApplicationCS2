@@ -9,14 +9,14 @@ public class ApproveTransfer {
     private TransferPort transferPort;
 
     public void approveLoan(long idTransfer) throws BusinessException {
-        Transfer transfer = TransferPort.findById(idTransfer);
+        Transfer transfer = transferPort.findById(idTransfer);
 
         if (transfer == null) {
-            throw new BusinessException("There's no transfer with that id.")
+            throw new BusinessException("There's no transfer with that id.");
         }
 
         if (!transfer.getTransferState().equals(TransferState.PENDING)) {
-            throw new BusinessException("Invalid status.")
+            throw new BusinessException("Invalid status.");
         }
 
         transfer.setTransferState(TransferState.COMPLETED);
