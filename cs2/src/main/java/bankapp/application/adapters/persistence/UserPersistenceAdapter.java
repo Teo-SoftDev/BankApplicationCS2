@@ -35,8 +35,7 @@ public class UserPersistenceAdapter implements UserPort {
 
     @Override
     public User findByDocument(String document) {
-        UserEntity entity = userRepository.findByDocument(document)
-            .orElseThrow(() -> new RuntimeException("User not found with document: " + document));
+        UserEntity entity = userRepository.findByDocument(document);
         return mapToDomain(entity);
     }
 
@@ -63,6 +62,9 @@ public class UserPersistenceAdapter implements UserPort {
     }
 
     private User mapToDomain(UserEntity entity) {
+        if (entity == null) {
+            return null;
+        }
         User user = new User();
         user.setId(entity.getId());
         user.setName(entity.getName());

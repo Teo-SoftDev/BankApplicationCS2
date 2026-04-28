@@ -27,8 +27,7 @@ public class BinnaclePersistenceAdapter implements BinnaclePort {
 
     @Override
     public Binnacle findById(long id) {
-        BinnacleEntity entity = binnacleRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Binnacle not found with id: " + id));
+        BinnacleEntity entity = binnacleRepository.findById(id);
         return mapToDomain(entity);
     }
 
