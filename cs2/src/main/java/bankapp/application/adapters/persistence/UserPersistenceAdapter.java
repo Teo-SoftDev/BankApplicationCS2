@@ -57,6 +57,8 @@ public class UserPersistenceAdapter implements UserPort {
         entity.setRelationId(user.getRelationId());
         entity.setRole(user.getRole());
         entity.setUserState(user.getUserState());
+        entity.setUsername(user.getUsername());
+        entity.setPassword(user.getPassword());
         return entity;
     }
 
@@ -72,6 +74,8 @@ public class UserPersistenceAdapter implements UserPort {
         user.setRelationId(entity.getRelationId());
         user.setRole(entity.getRole());
         user.setUserState(entity.getUserState());
+        user.setUsername(entity.getUsername());
+        user.setPassword(entity.getPassword());
         return user;
     }
 }
