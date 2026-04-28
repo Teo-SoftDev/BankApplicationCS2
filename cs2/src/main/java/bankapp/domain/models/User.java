@@ -12,4 +12,6 @@ public class User extends Person {
     private String relationId;
     private Role role;
     private UserState userState;
+    private String username;
+    private String password;
 }

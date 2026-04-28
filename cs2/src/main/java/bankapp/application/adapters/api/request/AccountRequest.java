@@ -1,23 +1,23 @@
-package bankapp.domain.models;
+package bankapp.application.adapters.api.request;
 
+import java.math.BigDecimal;
+
+import bankapp.domain.models.AccountState;
+import bankapp.domain.models.AccountType;
+import bankapp.domain.models.Currency;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 
-public class Account extends Product{
-    private long accountId;
+public class AccountRequest {
     private String accountNumber;
     private AccountType accountType;
-    private Client holder;
+    private Long holderId;
     private BigDecimal currentBalance;
     private Currency currencyType;
     private AccountState accountState;
-    private LocalDate openingDate;
 }
