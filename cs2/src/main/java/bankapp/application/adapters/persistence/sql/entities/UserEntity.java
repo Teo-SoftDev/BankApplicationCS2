@@ -40,13 +40,11 @@ public class UserEntity {
     @Column(nullable = false)
     private String relationId;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Role role;
+    private String role;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private UserState userState;
+    private String userState;
 
     @Column(nullable = false, unique = true)
     private String username;

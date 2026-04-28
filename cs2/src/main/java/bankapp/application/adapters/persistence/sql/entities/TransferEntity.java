@@ -34,7 +34,6 @@ public class TransferEntity {
     @Column
     private LocalDate approvalDate;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TransferState transferState;
+    private String transferState;
 }

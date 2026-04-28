@@ -52,9 +52,8 @@ public class LoanEntity {
     @Column(nullable = false)
     private int termInMonths;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private LoanState loanState;
+    private String loanState;
 
     @Temporal(TemporalType.DATE)
     @Column

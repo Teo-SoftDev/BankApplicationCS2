@@ -26,9 +26,8 @@ public class AccountEntity {
     @Column(nullable = false)
     private String productName;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ProdCategory productCategory;
+    private String productCategory;
 
     @Column(nullable = false)
     private boolean approval;
@@ -36,9 +35,8 @@ public class AccountEntity {
     @Column(nullable = false, unique = true)
     private String accountNumber;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private AccountType accountType;
+    private String accountType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "holder_id", nullable = false)
@@ -47,13 +45,11 @@ public class AccountEntity {
     @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal currentBalance;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Currency currencyType;
+    private String currencyType;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private AccountState accountState;
+    private String accountState;
 
     @Column(nullable = false)
     private LocalDate openingDate;

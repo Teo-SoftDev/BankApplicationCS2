@@ -20,9 +20,8 @@ public class BinnacleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long binnacleId;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private OperationType operationType;
+    private String operationType;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)

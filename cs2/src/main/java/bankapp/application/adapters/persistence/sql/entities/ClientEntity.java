@@ -38,7 +38,6 @@ public class ClientEntity {
     @Column(nullable = false)
     private String address;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ClientRole clientRole;
+    private String clientRole;
 }
