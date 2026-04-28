@@ -25,8 +25,7 @@ public class LoanPersistenceAdapter implements LoanPort {
 
     @Override
     public Loan findById(long loanId) {
-        LoanEntity entity = loanRepository.findById(Long.valueOf(loanId))
-            .orElseThrow(() -> new RuntimeException("Loan not found with id: " + loanId));
+        LoanEntity entity = loanRepository.findById(Long.valueOf(loanId));
         return mapToDomain(entity);
     }
 
@@ -64,6 +63,7 @@ public class LoanPersistenceAdapter implements LoanPort {
     }
 
     private Loan mapToDomain(LoanEntity entity) {
+        if (entity == null) return null;
         Loan loan = new Loan();
         loan.setLoanId(entity.getLoanId());
         loan.setProductId(entity.getProductId());
