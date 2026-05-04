@@ -2,7 +2,6 @@ package bankapp.application.adapters.persistence.sql.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import bankapp.domain.models.ClientRole;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;

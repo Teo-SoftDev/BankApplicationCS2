@@ -3,7 +3,6 @@ package bankapp.application.adapters.persistence.sql.entities;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import bankapp.domain.models.TransferState;
 import lombok.Getter;
 import lombok.Setter;
 

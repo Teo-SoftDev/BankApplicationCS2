@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import bankapp.domain.models.OperationType;
 
 @Entity
 @Table(name = "binnacles")

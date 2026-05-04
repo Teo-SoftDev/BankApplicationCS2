@@ -8,7 +8,6 @@ import bankapp.domain.models.Loan;
 import bankapp.domain.models.LoanState;
 import bankapp.domain.models.LoanType;
 import bankapp.domain.models.ProdCategory;
-import bankapp.domain.models.Role;
 import bankapp.domain.models.Account;
 import bankapp.domain.models.AccountState;
 import bankapp.domain.models.AccountType;

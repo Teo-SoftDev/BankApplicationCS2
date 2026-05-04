@@ -3,9 +3,6 @@ package bankapp.application.adapters.persistence.sql.entities;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import bankapp.domain.models.LoanType;
-import bankapp.domain.models.LoanState;
-import bankapp.domain.models.ProdCategory;
 import lombok.Getter;
 import lombok.Setter;
 

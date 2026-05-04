@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import bankapp.domain.models.Role;
-import bankapp.domain.models.UserState;
 
 @Getter
 @Setter
