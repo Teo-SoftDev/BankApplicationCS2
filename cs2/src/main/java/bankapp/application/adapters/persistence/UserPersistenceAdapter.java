@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import bankapp.domain.ports.UserPort;
+import bankapp.domain.models.Role;
 import bankapp.domain.models.User;
+import bankapp.domain.models.UserState;
 import bankapp.application.adapters.persistence.sql.repositories.UserRepository;
 import bankapp.application.adapters.persistence.sql.entities.UserEntity;
 
@@ -35,7 +37,8 @@ public class UserPersistenceAdapter implements UserPort {
 
     @Override
     public User findByDocument(String document) {
-        UserEntity entity = userRepository.findByDocument(document);
+        UserEntity entity = userRepository.findByDocument(document)
+            .orElseThrow(() -> new RuntimeException("User not found with document: " + document));
         return mapToDomain(entity);
     }
 
@@ -54,8 +57,8 @@ public class UserPersistenceAdapter implements UserPort {
         entity.setBirthDate(user.getBirthDate());
         entity.setAddress(user.getAddress());
         entity.setRelationId(user.getRelationId());
-        entity.setRole(user.getRole());
-        entity.setUserState(user.getUserState());
+        entity.setRole(user.getRole().toString());
+        entity.setUserState(user.getUserState().toString());
         entity.setUsername(user.getUsername());
         entity.setPassword(user.getPassword());
         return entity;
@@ -74,8 +77,8 @@ public class UserPersistenceAdapter implements UserPort {
         user.setBirthDate(entity.getBirthDate());
         user.setAddress(entity.getAddress());
         user.setRelationId(entity.getRelationId());
-        user.setRole(entity.getRole());
-        user.setUserState(entity.getUserState());
+        user.setRole(Role.valueOf(entity.getRole()));
+        user.setUserState(UserState.valueOf(entity.getUserState()));
         user.setUsername(entity.getUsername());
         user.setPassword(entity.getPassword());
         return user;

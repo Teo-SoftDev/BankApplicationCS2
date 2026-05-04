@@ -25,16 +25,14 @@ public class LoanEntity {
     @Column(nullable = false)
     private String productName;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ProdCategory productCategory;
+    private String productCategory;
 
     @Column(nullable = false)
     private boolean approval;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private LoanType loanType;
+    private String loanType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "requesting_client_id", nullable = false)

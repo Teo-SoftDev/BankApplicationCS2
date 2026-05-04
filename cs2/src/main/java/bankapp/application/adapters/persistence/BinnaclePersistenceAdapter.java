@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import bankapp.domain.ports.BinnaclePort;
 import bankapp.domain.models.Binnacle;
+import bankapp.domain.models.OperationType;
 import bankapp.domain.models.User;
 import bankapp.application.adapters.persistence.sql.repositories.BinnacleRepository;
 import bankapp.application.adapters.persistence.sql.entities.BinnacleEntity;
@@ -27,7 +28,8 @@ public class BinnaclePersistenceAdapter implements BinnaclePort {
 
     @Override
     public Binnacle findById(long id) {
-        BinnacleEntity entity = binnacleRepository.findById(id);
+        BinnacleEntity entity = binnacleRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Binnacle not found with id: " + id));
         return mapToDomain(entity);
     }
 
@@ -45,7 +47,7 @@ public class BinnaclePersistenceAdapter implements BinnaclePort {
 
         BinnacleEntity entity = new BinnacleEntity();
         entity.setBinnacleId(binnacle.getBinnacleId());
-        entity.setOperationType(binnacle.getOperationType());
+        entity.setOperationType(binnacle.getOperationType().toString());
         entity.setOperationDate(binnacle.getOperationDate());
         entity.setUserId(binnacle.getUserId() != null ? binnacle.getUserId().getId() : null);
         entity.setProductId(binnacle.getProductId() != null ? binnacle.getProductId().getProductId() : null);
@@ -60,7 +62,7 @@ public class BinnaclePersistenceAdapter implements BinnaclePort {
 
         Binnacle binnacle = new Binnacle();
         binnacle.setBinnacleId(entity.getBinnacleId());
-        binnacle.setOperationType(entity.getOperationType());
+        binnacle.setOperationType(OperationType.valueOf(entity.getOperationType()));
         binnacle.setOperationDate(entity.getOperationDate());
 
         if (entity.getUserId() != null) {

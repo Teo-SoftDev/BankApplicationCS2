@@ -5,7 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import bankapp.domain.ports.AccountPort;
 import bankapp.domain.models.Account;
+import bankapp.domain.models.AccountState;
+import bankapp.domain.models.AccountType;
 import bankapp.domain.models.Client;
+import bankapp.domain.models.ClientRole;
+import bankapp.domain.models.Currency;
+import bankapp.domain.models.ProdCategory;
 import bankapp.application.adapters.persistence.sql.repositories.AccountRepository;
 import bankapp.application.adapters.persistence.sql.entities.AccountEntity;
 import bankapp.application.adapters.persistence.sql.entities.ClientEntity;
@@ -54,14 +59,14 @@ public class AccountPersistenceAdapter implements AccountPort {
         AccountEntity entity = new AccountEntity();
         entity.setProductId(account.getProductId());
         entity.setProductName(account.getProductName());
-        entity.setProductCategory(account.getProductCategory());
+        entity.setProductCategory(account.getProductCategory().toString());
         entity.setApproval(account.isApproval());
         entity.setAccountNumber(account.getAccountNumber());
-        entity.setAccountType(account.getAccountType());
+        entity.setAccountType(account.getAccountType().toString());
         entity.setHolder(mapClientToEntity(account.getHolder()));
         entity.setCurrentBalance(account.getCurrentBalance());
-        entity.setCurrencyType(account.getCurrencyType());
-        entity.setAccountState(account.getAccountState());
+        entity.setCurrencyType(account.getCurrencyType().toString());
+        entity.setAccountState(account.getAccountState().toString());
         entity.setOpeningDate(account.getOpeningDate());
         return entity;
     }
@@ -74,14 +79,14 @@ public class AccountPersistenceAdapter implements AccountPort {
         Account account = new Account();
         account.setProductId(entity.getProductId());
         account.setProductName(entity.getProductName());
-        account.setProductCategory(entity.getProductCategory());
+        account.setProductCategory(ProdCategory.valueOf(entity.getProductCategory()));
         account.setApproval(entity.isApproval());
         account.setAccountNumber(entity.getAccountNumber());
-        account.setAccountType(entity.getAccountType());
+        account.setAccountType(AccountType.valueOf(entity.getAccountType()));
         account.setHolder(mapClientToDomain(entity.getHolder()));
         account.setCurrentBalance(entity.getCurrentBalance());
-        account.setCurrencyType(entity.getCurrencyType());
-        account.setAccountState(entity.getAccountState());
+        account.setCurrencyType(Currency.valueOf(entity.getCurrencyType()));
+        account.setAccountState(AccountState.valueOf(entity.getAccountState()));
         account.setOpeningDate(entity.getOpeningDate());
         return account;
     }
@@ -99,7 +104,7 @@ public class AccountPersistenceAdapter implements AccountPort {
         entity.setPhone(client.getPhone());
         entity.setBirthDate(client.getBirthDate());
         entity.setAddress(client.getAddress());
-        entity.setClientRole(client.getClientRole());
+        entity.setClientRole(client.getClientRole().toString());
         return entity;
     }
 
@@ -116,7 +121,7 @@ public class AccountPersistenceAdapter implements AccountPort {
         client.setPhone(entity.getPhone());
         client.setBirthDate(entity.getBirthDate());
         client.setAddress(entity.getAddress());
-        client.setClientRole(entity.getClientRole());
+        client.setClientRole(ClientRole.valueOf(entity.getClientRole()));
         return client;
     }
 }
