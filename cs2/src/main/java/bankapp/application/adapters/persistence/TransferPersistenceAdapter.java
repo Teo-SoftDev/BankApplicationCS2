@@ -10,7 +10,7 @@ import bankapp.domain.models.Account;
 import bankapp.domain.models.AccountState;
 import bankapp.domain.models.AccountType;
 import bankapp.domain.models.Client;
-import bankapp.domain.models.ClientRole;
+import bankapp.domain.models.Role;
 import bankapp.domain.models.Currency;
 import bankapp.domain.models.ProdCategory;
 import bankapp.application.adapters.persistence.sql.repositories.TransferRepository;
@@ -114,7 +114,7 @@ public class TransferPersistenceAdapter implements TransferPort {
         entity.setPhone(client.getPhone());
         entity.setBirthDate(client.getBirthDate());
         entity.setAddress(client.getAddress());
-        entity.setClientRole(client.getClientRole().toString());
+        entity.setRole(client.getRole().toString());
         return entity;
     }
 
@@ -127,7 +127,7 @@ public class TransferPersistenceAdapter implements TransferPort {
         client.setPhone(entity.getPhone());
         client.setBirthDate(entity.getBirthDate());
         client.setAddress(entity.getAddress());
-        client.setClientRole(ClientRole.valueOf(entity.getClientRole()));
+        client.setRole(Role.valueOf(entity.getRole()));
         return client;
     }
 }

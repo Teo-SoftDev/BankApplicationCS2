@@ -12,7 +12,7 @@ import bankapp.domain.models.Account;
 import bankapp.domain.models.AccountState;
 import bankapp.domain.models.AccountType;
 import bankapp.domain.models.Client;
-import bankapp.domain.models.ClientRole;
+import bankapp.domain.models.Role;
 import bankapp.domain.models.Currency;
 import bankapp.application.adapters.persistence.sql.repositories.LoanRepository;
 import bankapp.application.adapters.persistence.sql.entities.LoanEntity;
@@ -35,6 +35,11 @@ public class LoanPersistenceAdapter implements LoanPort {
         LoanEntity entity = loanRepository.findById(Long.valueOf(loanId))
             .orElseThrow(() -> new RuntimeException("Loan not found with id: " + loanId));
         return mapToDomain(entity);
+    }
+
+    @Override
+    public List<Loan> findLoanByClient(String document) {
+        
     }
 
     @Override
@@ -138,7 +143,7 @@ public class LoanPersistenceAdapter implements LoanPort {
         entity.setPhone(client.getPhone());
         entity.setBirthDate(client.getBirthDate());
         entity.setAddress(client.getAddress());
-        entity.setClientRole(client.getClientRole().toString());
+        entity.setRole(client.getRole().toString());
         return entity;
     }
 
@@ -152,7 +157,7 @@ public class LoanPersistenceAdapter implements LoanPort {
         client.setPhone(entity.getPhone());
         client.setBirthDate(entity.getBirthDate());
         client.setAddress(entity.getAddress());
-        client.setClientRole(ClientRole.valueOf(entity.getClientRole()));
+        client.setRole(Role.valueOf(entity.getRole()));
         return client;
     }
 }

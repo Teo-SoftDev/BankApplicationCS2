@@ -2,10 +2,9 @@ package bankapp.domain.services;
 
 import java.util.List;
 
-import javax.management.relation.Role;
+import bankapp.domain.models.Role;
 
 import bankapp.domain.models.Client;
-import bankapp.domain.models.ClientRole;
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.ClientPort;
 import bankapp.domain.ports.LoanPort;
@@ -33,8 +32,6 @@ public class FindLoan {
             throw new BusinessException("There's no client with the document" + document);
         }
 
-        if(client.getClientRole().equals()) {
-
-        }
+        return loanPort.findLoanByClient(client);
     }
 }

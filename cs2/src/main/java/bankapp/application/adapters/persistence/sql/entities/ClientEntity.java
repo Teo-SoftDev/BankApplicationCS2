@@ -38,5 +38,5 @@ public class ClientEntity {
     private String address;
 
     @Column(nullable = false)
-    private String clientRole;
+    private String role;
 }

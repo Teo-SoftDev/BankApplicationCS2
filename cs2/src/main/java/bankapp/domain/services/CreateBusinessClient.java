@@ -2,7 +2,7 @@ package bankapp.domain.services;
 
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.models.Client;
-import bankapp.domain.models.ClientRole;
+import bankapp.domain.models.Role;
 import bankapp.domain.ports.ClientPort;
 
 public class CreateBusinessClient {
@@ -16,7 +16,7 @@ public class CreateBusinessClient {
         if(clientPort.existsByDocument(client.getDocument())) {
             throw new BusinessException("There is already a client with that document.");
         }
-        client.setClientRole(ClientRole.BUSINESSCLIENT);
+        client.setRole(Role.BUSINESSCLIENT);
         clientPort.saveClient(client);
     }
 }

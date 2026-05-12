@@ -1,6 +1,8 @@
 package bankapp.domain.models;
 
 public enum Role {
+    NATURALCLIENT,
+    BUSINESSCLIENT,
     CASHIER,
     SERVICEADVISOR,
     PRODUCTADVISOR,

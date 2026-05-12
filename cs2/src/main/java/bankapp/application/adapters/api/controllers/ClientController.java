@@ -30,7 +30,7 @@ public class ClientController {
         client.setPhone(request.getPhone());
         client.setAddress(request.getAddress());
         client.setBirthDate(request.getBirthDate());
-        client.setClientRole(request.getClientRole());
+        client.setRole(request.getRole());
 
         createClient.createClient(client);
 
@@ -42,7 +42,7 @@ public class ClientController {
         response.setPhone(client.getPhone());
         response.setAddress(client.getAddress());
         response.setBirthDate(client.getBirthDate());
-        response.setClientRole(client.getClientRole());
+        response.setRole(client.getRole());
 
         return response;
     }
