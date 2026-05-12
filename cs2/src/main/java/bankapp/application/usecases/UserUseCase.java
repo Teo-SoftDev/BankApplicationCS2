@@ -2,7 +2,6 @@ package bankapp.application.usecases;
 
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.models.Loan;
-import bankapp.domain.models.User;
 import bankapp.domain.models.Client;
 import bankapp.domain.models.Transfer;
 import bankapp.domain.models.Account;
