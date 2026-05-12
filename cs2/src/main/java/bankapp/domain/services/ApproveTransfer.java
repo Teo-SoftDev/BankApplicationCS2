@@ -8,7 +8,7 @@ import bankapp.domain.models.TransferState;
 public class ApproveTransfer {
     private TransferPort transferPort;
 
-    public void approveLoan(long idTransfer) throws BusinessException {
+    public void approveTransfer(long idTransfer) throws BusinessException {
         Transfer transfer = transferPort.findById(idTransfer);
 
         if (transfer == null) {

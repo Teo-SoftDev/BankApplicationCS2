@@ -104,7 +104,7 @@ public class AccountPersistenceAdapter implements AccountPort {
         entity.setPhone(client.getPhone());
         entity.setBirthDate(client.getBirthDate());
         entity.setAddress(client.getAddress());
-        entity.setClientRole(client.getClientRole().toString());
+        entity.setClientRole(client.getRole().toString());
         return entity;
     }
 
@@ -121,7 +121,7 @@ public class AccountPersistenceAdapter implements AccountPort {
         client.setPhone(entity.getPhone());
         client.setBirthDate(entity.getBirthDate());
         client.setAddress(entity.getAddress());
-        client.setClientRole(ClientRole.valueOf(entity.getClientRole()));
+        client.setRole(ClientRole.valueOf(entity.getRole()));
         return client;
     }
 }

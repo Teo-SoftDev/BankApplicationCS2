@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class Client extends Person{
-    private ClientRole clientRole;
+    private Role role;
     private ArrayList<Product> productsList = new ArrayList<>();
 }
