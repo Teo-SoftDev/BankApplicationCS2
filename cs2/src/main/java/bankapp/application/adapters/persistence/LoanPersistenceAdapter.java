@@ -1,7 +1,12 @@
 package bankapp.application.adapters.persistence;
 
 import org.springframework.stereotype.Service;
+
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 import bankapp.domain.ports.LoanPort;
 import bankapp.domain.models.Loan;
@@ -38,8 +43,11 @@ public class LoanPersistenceAdapter implements LoanPort {
     }
 
     @Override
-    public List<Loan> findLoanByClient(String document) {
-        
+    public List<Loan> findLoanByClient(Client requestingClient) {
+        List<LoanEntity> entities = loanRepository.findByRequestingClientDocument(requestingClient.getDocument());
+        return entities.stream()
+            .map(this::mapToDomain)
+            .collect(Collectors.toList());
     }
 
     @Override

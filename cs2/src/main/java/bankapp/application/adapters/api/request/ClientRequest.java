@@ -2,7 +2,7 @@ package bankapp.application.adapters.api.request;
 
 import java.time.LocalDate;
 
-import bankapp.domain.models.ClientRole;
+import bankapp.domain.models.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,5 +19,5 @@ public class ClientRequest {
     private String phone;
     private String address;
     private LocalDate birthDate;
-    private ClientRole clientRole;
+    private Role role;
 }
