@@ -2,6 +2,8 @@ package bankapp.application.usecases;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.models.Account;
 import bankapp.domain.models.Loan;
 import bankapp.domain.models.Transfer;
@@ -11,6 +13,7 @@ import bankapp.domain.services.FindAccount;
 import bankapp.domain.services.FindTransfer;
 import bankapp.domain.services.FindLoan;
 
+@Service
 public class CompanyEmployeeUseCase {
     private final CreateTransfer createTransfer;
     private final FindAccount findAccount;

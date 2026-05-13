@@ -2,6 +2,7 @@ package bankapp.application.adapters.api.response;
 
 import bankapp.domain.models.Role;
 import bankapp.domain.models.UserState;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class UserResponse {
     private long id;
     private String document;
@@ -21,4 +22,18 @@ public class UserResponse {
     private String username;
     private Role role;
     private UserState userState;
+
+    public static UserResponse fromUser(bankapp.domain.models.User user) {
+        UserResponse response = new UserResponse();
+        response.setId(user.getId());
+        response.setDocument(user.getDocument());
+        response.setName(user.getName());
+        response.setEmail(user.getEmail());
+        response.setPhone(user.getPhone());
+        response.setAddress(user.getAddress());
+        response.setUsername(user.getUsername());
+        response.setRole(user.getRole());
+        response.setUserState(user.getUserState());
+        return response;
+    }
 }

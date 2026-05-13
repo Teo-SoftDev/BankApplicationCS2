@@ -5,37 +5,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import bankapp.application.adapters.api.request.TransferRequest;
+import bankapp.application.adapters.api.request.CreateTransferRequest;
 import bankapp.application.adapters.api.response.TransferResponse;
-import bankapp.domain.models.Transfer;
-import bankapp.domain.models.TransferState;
-import bankapp.domain.services.CreateTransfer;
-import lombok.Getter;
-import lombok.Setter;
+import bankapp.application.usecases.CompanyEmployeeUseCase;
+
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/transfers")
-@Getter
-@Setter
-
+@AllArgsConstructor
 public class TransferController {
     
-    private CreateTransfer createTransfer;
+    private CompanyEmployeeUseCase companyEmployeeUseCase;
 
     @PostMapping
-    public TransferResponse createTransfer(@RequestBody TransferRequest request) {
-        Transfer transfer = new Transfer();
-        transfer.setAmount(request.getAmount());
-        transfer.setTransferState(TransferState.PENDING);
-
-        createTransfer.createTransfer(transfer);
-
-        TransferResponse response = new TransferResponse();
-        response.setId(transfer.getIdTransfer());
-        response.setAmount(transfer.getAmount());
-        response.setCreationDate(transfer.getCreationDate());
-        response.setTransferState(transfer.getTransferState());
-
-        return response;
+    public TransferResponse createTransfer(@RequestBody CreateTransferRequest request) throws Exception {
+        companyEmployeeUseCase.createTransfer(
+            request.getOriginAccountNumber(),
+            request.getDestinationAccountNumber(),
+            request.getAmount()
+        );
+        return new TransferResponse();
     }
 }

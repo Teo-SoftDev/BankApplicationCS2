@@ -1,11 +1,18 @@
 package bankapp.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.LoanPort;
 import bankapp.domain.models.Loan;
 
+@Service
 public class CreateLoan {
-    private LoanPort loanPort;
+    private final LoanPort loanPort;
+
+    public CreateLoan(LoanPort loanPort) {
+        this.loanPort = loanPort;
+    }
 
     public void createLoan(Loan loan) throws BusinessException{
 

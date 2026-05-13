@@ -2,6 +2,8 @@ package bankapp.application.usecases;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.models.Client;
 import bankapp.domain.models.Account;
 
@@ -11,7 +13,7 @@ import bankapp.domain.services.FindAccount;
 import bankapp.domain.services.FindClient;
 import bankapp.domain.services.UpdateAccountBalance;
 
-
+@Service
 public class CashierUseCase {
     private final CreateNaturalClient createNaturalClient;
     private final CreateBusinessClient createBusinessClient;

@@ -4,14 +4,23 @@ import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.TransferPort;
 import bankapp.domain.models.Transfer;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.models.Client;
 import bankapp.domain.models.User;
 import bankapp.domain.ports.ClientPort;
 
+@Service
 public class FindTransfer {
 
-    private TransferPort transferPort;
-    private ClientPort clientPort;
+    private final TransferPort transferPort;
+    private final ClientPort clientPort;
+
+    public FindTransfer(TransferPort transferPort, ClientPort clientPort) {
+        this.transferPort = transferPort;
+        this.clientPort = clientPort;
+    }
 
     public Transfer findById(long idTransfer) throws BusinessException {
         Transfer transfer = transferPort.findById(idTransfer);

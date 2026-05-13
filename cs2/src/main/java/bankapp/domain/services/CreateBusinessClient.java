@@ -1,10 +1,13 @@
 package bankapp.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.models.Client;
 import bankapp.domain.models.Role;
 import bankapp.domain.ports.ClientPort;
 
+@Service
 public class CreateBusinessClient {
     private final ClientPort clientPort;
 

@@ -1,12 +1,19 @@
 package bankapp.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.TransferPort;
 import bankapp.domain.models.Transfer;
 import bankapp.domain.models.TransferState;
 
+@Service
 public class ApproveTransfer {
-    private TransferPort transferPort;
+    private final TransferPort transferPort;
+
+    public ApproveTransfer(TransferPort transferPort) {
+        this.transferPort = transferPort;
+    }
 
     public void approveTransfer(long idTransfer) throws BusinessException {
         Transfer transfer = transferPort.findById(idTransfer);

@@ -2,13 +2,20 @@ package bankapp.domain.services;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.models.Account;
 import bankapp.domain.ports.AccountPort;
 
+@Service
 public class UpdateAccountBalance {
     
-    private AccountPort accountPort;
+    private final AccountPort accountPort;
+
+    public UpdateAccountBalance(AccountPort accountPort) {
+        this.accountPort = accountPort;
+    }
 
     public void updateAccountBalance(String accountNumber, BigDecimal balance) throws BusinessException {
 

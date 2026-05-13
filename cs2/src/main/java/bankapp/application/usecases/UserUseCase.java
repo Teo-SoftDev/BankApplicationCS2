@@ -1,5 +1,7 @@
 package bankapp.application.usecases;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.models.Loan;
 import bankapp.domain.models.Client;
@@ -12,6 +14,7 @@ import bankapp.domain.services.FindLoan;
 import bankapp.domain.services.FindTransfer;
 import bankapp.domain.services.FindAccount;
 
+@Service
 public class UserUseCase {
     private final CreateLoan createLoan;
     private final FindLoan findLoan;

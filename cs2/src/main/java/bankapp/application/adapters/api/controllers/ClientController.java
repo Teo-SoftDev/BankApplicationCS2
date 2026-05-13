@@ -7,43 +7,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bankapp.application.adapters.api.request.ClientRequest;
 import bankapp.application.adapters.api.response.ClientResponse;
+import bankapp.application.usecases.CashierUseCase;
 import bankapp.domain.models.Client;
-import bankapp.domain.services.CreateClient;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/clients")
-@Getter
-@Setter
-
+@AllArgsConstructor
 public class ClientController {
     
-    private CreateClient createClient;
+    private CashierUseCase cashierUseCase;
 
-    @PostMapping
-    public ClientResponse createClient(@RequestBody ClientRequest request) {
-        Client client = new Client();
-        client.setDocument(request.getDocument());
-        client.setName(request.getName());
-        client.setEmail(request.getEmail());
-        client.setPhone(request.getPhone());
-        client.setAddress(request.getAddress());
-        client.setBirthDate(request.getBirthDate());
-        client.setRole(request.getRole());
+    @PostMapping("/natural")
+    public ClientResponse createNaturalClient(@RequestBody ClientRequest request) throws Exception {
+        Client client = ClientRequest.toEntity(request);
+        cashierUseCase.createNaturalClient(client);
+        return ClientResponse.fromClient(client);
+    }
 
-        createClient.createClient(client);
-
-        ClientResponse response = new ClientResponse();
-        response.setId(client.getId());
-        response.setDocument(client.getDocument());
-        response.setName(client.getName());
-        response.setEmail(client.getEmail());
-        response.setPhone(client.getPhone());
-        response.setAddress(client.getAddress());
-        response.setBirthDate(client.getBirthDate());
-        response.setRole(client.getRole());
-
-        return response;
+    @PostMapping("/business")
+    public ClientResponse createBusinessClient(@RequestBody ClientRequest request) throws Exception {
+        Client client = ClientRequest.toEntity(request);
+        cashierUseCase.createBusinessClient(client);
+        return ClientResponse.fromClient(client);
     }
 }

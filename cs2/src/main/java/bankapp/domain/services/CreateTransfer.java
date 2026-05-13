@@ -1,12 +1,19 @@
 package bankapp.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.TransferPort;
 import bankapp.domain.models.Transfer;
 
+@Service
 public class CreateTransfer {
     
-    private TransferPort transferPort;
+    private final TransferPort transferPort;
+
+    public CreateTransfer(TransferPort transferPort) {
+        this.transferPort = transferPort;
+    }
 
     public void createTransfer(Transfer transfer) throws BusinessException {
 

@@ -1,10 +1,17 @@
 package bankapp.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.ClientPort;
 
+@Service
 public class DeleteClient {
-    private ClientPort clientPort;
+    private final ClientPort clientPort;
+
+    public DeleteClient(ClientPort clientPort) {
+        this.clientPort = clientPort;
+    }
 
     public void deleteClient(String document) throws BusinessException {
         if (!clientPort.existsByDocument(document)) {

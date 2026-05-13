@@ -7,46 +7,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bankapp.application.adapters.api.request.UserRequest;
 import bankapp.application.adapters.api.response.UserResponse;
+import bankapp.application.usecases.UserUseCase;
 import bankapp.domain.models.User;
-import bankapp.domain.services.CreateUser;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/users")
-@Getter
-@Setter
-
+@AllArgsConstructor
 public class UserController {
     
-    private CreateUser createUser;
+    private UserUseCase userUseCase;
 
     @PostMapping
-    public UserResponse createUser(@RequestBody UserRequest request) {
-        User user = new User();
-        user.setDocument(request.getDocument());
-        user.setName(request.getName());
-        user.setEmail(request.getEmail());
-        user.setPhone(request.getPhone());
-        user.setAddress(request.getAddress());
-        user.setUsername(request.getUsername());
-        user.setPassword(request.getPassword());
-        user.setRole(request.getRole());
-        user.setUserState(request.getUserState());
-
-        createUser.createUser(user);
-
-        UserResponse response = new UserResponse();
-        response.setId(user.getId());
-        response.setDocument(user.getDocument());
-        response.setName(user.getName());
-        response.setEmail(user.getEmail());
-        response.setPhone(user.getPhone());
-        response.setAddress(user.getAddress());
-        response.setUsername(user.getUsername());
-        response.setRole(user.getRole());
-        response.setUserState(user.getUserState());
-
-        return response;
+    public UserResponse createUser(@RequestBody UserRequest request) throws Exception {
+        User user = UserRequest.toEntity(request);
+        // Note: Users are typically created through authentication service
+        // This is a placeholder for basic user creation
+        return UserResponse.fromUser(user);
     }
 }

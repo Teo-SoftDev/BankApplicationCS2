@@ -12,20 +12,19 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoanRequest {
+public class CreateLoanRequest {
     private LoanType loanType;
     private String clientDocument;
     private BigDecimal requestedAmount;
     private BigDecimal interestRate;
     private int termInMonths;
 
-    public static bankapp.domain.models.Loan toEntity(LoanRequest request) {
+    public static bankapp.domain.models.Loan toEntity(CreateLoanRequest request) {
         bankapp.domain.models.Loan loan = new bankapp.domain.models.Loan();
         loan.setLoanType(request.getLoanType());
         loan.setRequestedAmount(request.getRequestedAmount());
         loan.setInterestRate(request.getInterestRate());
         loan.setTermInMonths(request.getTermInMonths());
-        loan.setLoanState(bankapp.domain.models.LoanState.INSTUDY);
         return loan;
     }
 }

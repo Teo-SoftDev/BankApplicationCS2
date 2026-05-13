@@ -1,6 +1,9 @@
 package bankapp.application.usecases;
 
 import bankapp.domain.models.Client;
+
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.models.Account;
 import bankapp.domain.models.Loan;
 
@@ -9,6 +12,7 @@ import bankapp.domain.services.FindAccount;
 import bankapp.domain.services.CreateLoan;
 import bankapp.domain.services.FindLoan;
 
+@Service
 public class ProductAdvisorUseCase {
     private final CreateAccount createAccount;
     private final FindAccount findAccount;

@@ -15,6 +15,9 @@ import bankapp.domain.models.User;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class BackOfficeUseCase {
     private final FindClient findClient;
     private final FindAccount findAccount;

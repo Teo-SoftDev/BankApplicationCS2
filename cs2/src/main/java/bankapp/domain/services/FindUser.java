@@ -1,11 +1,18 @@
 package bankapp.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.UserPort;
 import bankapp.domain.models.User;
 
+@Service
 public class FindUser {
-    private UserPort userPort;
+    private final UserPort userPort;
+
+    public FindUser(UserPort userPort) {
+        this.userPort = userPort;
+    }
 
     public User findByDocument(String document) throws BusinessException {
         User user = userPort.findByDocument(document);

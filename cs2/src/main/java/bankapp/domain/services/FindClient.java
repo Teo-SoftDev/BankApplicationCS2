@@ -1,11 +1,18 @@
 package bankapp.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.ClientPort;
 import bankapp.domain.models.Client;
 
+@Service
 public class FindClient {
-    private ClientPort clientPort;
+    private final ClientPort clientPort;
+
+    public FindClient(ClientPort clientPort) {
+        this.clientPort = clientPort;
+    }
 
     public Client findByDocument(String document) throws BusinessException {
         Client client = clientPort.findByDocument(document);

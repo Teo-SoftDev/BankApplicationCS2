@@ -2,6 +2,8 @@ package bankapp.domain.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.models.Client;
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.ClientPort;
@@ -9,9 +11,15 @@ import bankapp.domain.ports.LoanPort;
 import bankapp.domain.models.Loan;
 import bankapp.domain.models.User;
 
+@Service
 public class FindLoan {
-    private LoanPort loanPort;
-    private ClientPort clientPort;
+    private final LoanPort loanPort;
+    private final ClientPort clientPort;
+
+    public FindLoan(LoanPort loanPort, ClientPort clientPort) {
+        this.loanPort = loanPort;
+        this.clientPort = clientPort;
+    }
 
     public Loan findById(long loanId) throws BusinessException {
         Loan loan = loanPort.findById(loanId);

@@ -5,43 +5,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import bankapp.application.adapters.api.request.LoanRequest;
+import bankapp.application.adapters.api.request.CreateLoanRequest;
 import bankapp.application.adapters.api.response.LoanResponse;
+import bankapp.application.usecases.ProductAdvisorUseCase;
+import bankapp.domain.models.Client;
 import bankapp.domain.models.Loan;
-import bankapp.domain.models.LoanState;
-import bankapp.domain.services.CreateLoan;
-import lombok.Getter;
-import lombok.Setter;
+import bankapp.domain.services.FindClient;
+
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/loans")
-@Getter
-@Setter
-
+@AllArgsConstructor
 public class LoanController {
     
-    private CreateLoan createLoan;
+    private ProductAdvisorUseCase productAdvisorUseCase;
+    private FindClient findClient;
 
     @PostMapping
-    public LoanResponse createLoan(@RequestBody LoanRequest request) {
-        Loan loan = new Loan();
-        loan.setLoanType(request.getLoanType());
-        loan.setRequestedAmount(request.getRequestedAmount());
-        loan.setInterestRate(request.getInterestRate());
-        loan.setTermInMonths(request.getTermInMonths());
-        loan.setLoanState(LoanState.INSTUDY);
-
-        createLoan.createLoan(loan);
-
-        LoanResponse response = new LoanResponse();
-        response.setId(loan.getLoanId());
-        response.setLoanType(loan.getLoanType());
-        response.setRequestedAmount(loan.getRequestedAmount());
-        response.setApprovedAmount(loan.getApprovedAmount());
-        response.setInterestRate(loan.getInterestRate());
-        response.setTermInMonths(loan.getTermInMonths());
-        response.setLoanState(loan.getLoanState());
-
-        return response;
+    public LoanResponse createLoan(@RequestBody CreateLoanRequest request) throws Exception {
+        Loan loan = CreateLoanRequest.toEntity(request);
+        
+        // Find client by document
+        Client client = findClient.findByDocument(request.getClientDocument());
+        
+        productAdvisorUseCase.createLoan(client, loan);
+        return LoanResponse.fromLoan(loan);
     }
 }

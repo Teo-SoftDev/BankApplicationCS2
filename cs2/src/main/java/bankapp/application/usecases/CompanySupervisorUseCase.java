@@ -3,6 +3,9 @@ package bankapp.application.usecases;
 import bankapp.domain.Exceptions.BusinessException;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.models.Loan;
 import bankapp.domain.models.Transfer;
 import bankapp.domain.models.User;
@@ -11,6 +14,7 @@ import bankapp.domain.services.ApproveTransfer;
 import bankapp.domain.services.FindLoan;
 import bankapp.domain.services.FindTransfer;
 
+@Service
 public class CompanySupervisorUseCase {
     private final ApproveLoan approveLoan;
     private final ApproveTransfer approveTransfer;

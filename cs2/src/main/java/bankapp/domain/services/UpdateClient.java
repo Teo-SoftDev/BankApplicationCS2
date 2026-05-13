@@ -1,11 +1,18 @@
 package bankapp.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.models.Client;
 import bankapp.domain.ports.ClientPort;
 
+@Service
 public class UpdateClient {
-    private ClientPort clientPort;
+    private final ClientPort clientPort;
+
+    public UpdateClient(ClientPort clientPort) {
+        this.clientPort = clientPort;
+    }
 
     public void updateClient(Client client) throws BusinessException {
         if (!clientPort.existsByDocument(client.getDocument())) {

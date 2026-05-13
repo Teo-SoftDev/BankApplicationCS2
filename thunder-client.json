@@ -1,0 +1,366 @@
+{
+  "clients": [
+    {
+      "collectionName": "Bank Application",
+      "dateExported": "2024-05-12T00:00:00.000Z",
+      "version": "1.1",
+      "folders": [
+        {
+          "name": "BackOffice",
+          "requests": [
+            {
+              "name": "Get Client by Document",
+              "method": "GET",
+              "url": "http://localhost:8080/api/backoffice/clients/12345678",
+              "headers": {}
+            },
+            {
+              "name": "Get Account by Number",
+              "method": "GET",
+              "url": "http://localhost:8080/api/backoffice/accounts/ACC001",
+              "headers": {}
+            },
+            {
+              "name": "Get Loan by ID",
+              "method": "GET",
+              "url": "http://localhost:8080/api/backoffice/loans/1",
+              "headers": {}
+            },
+            {
+              "name": "Find Loans by Client",
+              "method": "POST",
+              "url": "http://localhost:8080/api/backoffice/loans/by-client",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "document": "12345678",
+                "user": {
+                  "id": 1,
+                  "username": "admin",
+                  "role": "ADMIN"
+                }
+              }
+            },
+            {
+              "name": "Get Transfer by ID",
+              "method": "GET",
+              "url": "http://localhost:8080/api/backoffice/transfers/1",
+              "headers": {}
+            },
+            {
+              "name": "Find Transfers by Client",
+              "method": "POST",
+              "url": "http://localhost:8080/api/backoffice/transfers/by-client",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "document": "12345678",
+                "user": {
+                  "id": 1,
+                  "username": "admin",
+                  "role": "ADMIN"
+                }
+              }
+            },
+            {
+              "name": "Approve Loan",
+              "method": "POST",
+              "url": "http://localhost:8080/api/backoffice/loans/1/approve",
+              "headers": {}
+            },
+            {
+              "name": "Approve Transfer",
+              "method": "POST",
+              "url": "http://localhost:8080/api/backoffice/transfers/1/approve",
+              "headers": {}
+            }
+          ]
+        },
+        {
+          "name": "Cashier",
+          "requests": [
+            {
+              "name": "Create Natural Client",
+              "method": "POST",
+              "url": "http://localhost:8080/api/cashier/clients/natural",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "document": "12345678",
+                "name": "Juan",
+                "lastName": "Pérez",
+                "email": "juan@example.com",
+                "phone": "3001234567",
+                "address": "Calle 1 #1",
+                "birthDate": "1990-01-01",
+                "role": "CLIENTE"
+              }
+            },
+            {
+              "name": "Create Business Client",
+              "method": "POST",
+              "url": "http://localhost:8080/api/cashier/clients/business",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "document": "900123456",
+                "name": "Empresa XYZ",
+                "lastName": "SAS",
+                "email": "empresa@example.com",
+                "phone": "6012345678",
+                "address": "Calle 5 #50",
+                "birthDate": "2000-01-01",
+                "role": "EMPRESA"
+              }
+            },
+            {
+              "name": "Get Client by Document",
+              "method": "GET",
+              "url": "http://localhost:8080/api/cashier/clients/12345678",
+              "headers": {}
+            },
+            {
+              "name": "Get Account by Number",
+              "method": "GET",
+              "url": "http://localhost:8080/api/cashier/accounts/ACC001",
+              "headers": {}
+            },
+            {
+              "name": "Update Account Balance",
+              "method": "POST",
+              "url": "http://localhost:8080/api/cashier/accounts/update-balance",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "accountNumber": "ACC001",
+                "newBalance": 5000.00
+              }
+            }
+          ]
+        },
+        {
+          "name": "Product Advisor",
+          "requests": [
+            {
+              "name": "Create Account",
+              "method": "POST",
+              "url": "http://localhost:8080/api/advisor/accounts",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "accountNumber": "ACC001",
+                "accountType": "SAVINGS",
+                "clientDocument": "12345678",
+                "currentBalance": 1000.00,
+                "currencyType": "COP",
+                "accountState": "ACTIVEACCOUNT"
+              }
+            },
+            {
+              "name": "Get Account by Number",
+              "method": "GET",
+              "url": "http://localhost:8080/api/advisor/accounts/ACC001",
+              "headers": {}
+            },
+            {
+              "name": "Create Loan",
+              "method": "POST",
+              "url": "http://localhost:8080/api/advisor/loans",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "loanType": "MORTGAGE",
+                "clientDocument": "12345678",
+                "requestedAmount": 50000.00,
+                "interestRate": 5.5,
+                "termInMonths": 60
+              }
+            },
+            {
+              "name": "Get Loan by ID",
+              "method": "GET",
+              "url": "http://localhost:8080/api/advisor/loans/1",
+              "headers": {}
+            }
+          ]
+        },
+        {
+          "name": "Company Employee",
+          "requests": [
+            {
+              "name": "Create Transfer",
+              "method": "POST",
+              "url": "http://localhost:8080/api/employee/transfers",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "originAccountNumber": "ACC001",
+                "destinationAccountNumber": "ACC002",
+                "amount": 1000.00
+              }
+            },
+            {
+              "name": "Get Account by Number",
+              "method": "GET",
+              "url": "http://localhost:8080/api/employee/accounts/ACC001",
+              "headers": {}
+            },
+            {
+              "name": "Get Transfer by ID",
+              "method": "GET",
+              "url": "http://localhost:8080/api/employee/transfers/1",
+              "headers": {}
+            },
+            {
+              "name": "Get Loan by ID",
+              "method": "GET",
+              "url": "http://localhost:8080/api/employee/loans/1",
+              "headers": {}
+            }
+          ]
+        },
+        {
+          "name": "Company Supervisor",
+          "requests": [
+            {
+              "name": "Approve Loan",
+              "method": "POST",
+              "url": "http://localhost:8080/api/supervisor/loans/1/approve",
+              "headers": {}
+            },
+            {
+              "name": "Approve Transfer",
+              "method": "POST",
+              "url": "http://localhost:8080/api/supervisor/transfers/1/approve",
+              "headers": {}
+            },
+            {
+              "name": "Find Loans by Client",
+              "method": "POST",
+              "url": "http://localhost:8080/api/supervisor/loans/by-client",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "document": "12345678",
+                "user": {
+                  "id": 1,
+                  "username": "supervisor",
+                  "role": "SUPERVISOR"
+                }
+              }
+            },
+            {
+              "name": "Find Transfers by Client",
+              "method": "POST",
+              "url": "http://localhost:8080/api/supervisor/transfers/by-client",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "document": "12345678",
+                "user": {
+                  "id": 1,
+                  "username": "supervisor",
+                  "role": "SUPERVISOR"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Users",
+          "requests": [
+            {
+              "name": "Create User",
+              "method": "POST",
+              "url": "http://localhost:8080/api/users",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "document": "87654321",
+                "name": "Admin",
+                "lastName": "User",
+                "email": "admin@example.com",
+                "phone": "3009876543",
+                "address": "Calle 10 #100",
+                "username": "admin",
+                "password": "password123",
+                "role": "ADMIN",
+                "userState": "ACTIVE"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Accounts",
+          "requests": [
+            {
+              "name": "Create Account",
+              "method": "POST",
+              "url": "http://localhost:8080/api/accounts",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "accountNumber": "ACC003",
+                "accountType": "CHECKING",
+                "clientDocument": "12345678",
+                "currentBalance": 2000.00,
+                "currencyType": "COP",
+                "accountState": "ACTIVEACCOUNT"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Loans",
+          "requests": [
+            {
+              "name": "Create Loan",
+              "method": "POST",
+              "url": "http://localhost:8080/api/loans",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "loanType": "PERSONAL",
+                "clientDocument": "12345678",
+                "requestedAmount": 10000.00,
+                "interestRate": 8.0,
+                "termInMonths": 24
+              }
+            }
+          ]
+        },
+        {
+          "name": "Transfers",
+          "requests": [
+            {
+              "name": "Create Transfer",
+              "method": "POST",
+              "url": "http://localhost:8080/api/transfers",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "originAccountNumber": "ACC001",
+                "destinationAccountNumber": "ACC002",
+                "amount": 500.00
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

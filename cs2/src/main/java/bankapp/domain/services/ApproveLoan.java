@@ -1,12 +1,19 @@
 package bankapp.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.LoanPort;
 import bankapp.domain.models.Loan;
 import bankapp.domain.models.LoanState;
 
+@Service
 public class ApproveLoan {
-    private LoanPort loanPort;
+    private final LoanPort loanPort;
+
+    public ApproveLoan(LoanPort loanPort) {
+        this.loanPort = loanPort;
+    }
 
     public void approveLoan(long loanId) throws BusinessException {
         Loan loan = loanPort.findById(loanId);

@@ -7,23 +7,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bankapp.application.adapters.api.request.AccountRequest;
 import bankapp.application.adapters.api.response.AccountResponse;
+import bankapp.application.usecases.ProductAdvisorUseCase;
 import bankapp.domain.models.Account;
 import bankapp.domain.models.AccountState;
-import bankapp.domain.services.CreateAccount;
-import lombok.Getter;
-import lombok.Setter;
+import bankapp.domain.models.Client;
+import bankapp.domain.services.FindClient;
+
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/accounts")
-@Getter
-@Setter
-
+@AllArgsConstructor
 public class AccountController {
     
-    private CreateAccount createAccount;
+    private ProductAdvisorUseCase productAdvisorUseCase;
+    private FindClient findClient;
 
     @PostMapping
-    public AccountResponse createAccount(@RequestBody AccountRequest request) {
+    public AccountResponse createAccount(@RequestBody AccountRequest request) throws Exception {
         Account account = new Account();
         account.setAccountNumber(request.getAccountNumber());
         account.setAccountType(request.getAccountType());
@@ -31,17 +32,12 @@ public class AccountController {
         account.setCurrencyType(request.getCurrencyType());
         account.setAccountState(AccountState.ACTIVEACCOUNT);
 
-        createAccount.createAccount(account);
+        // Find client by document if provided
+        Client client = request.getClientDocument() != null ? 
+            findClient.findByDocument(request.getClientDocument()) : null;
 
-        AccountResponse response = new AccountResponse();
-        response.setId(account.getAccountId());
-        response.setAccountNumber(account.getAccountNumber());
-        response.setAccountType(account.getAccountType());
-        response.setCurrentBalance(account.getCurrentBalance());
-        response.setCurrencyType(account.getCurrencyType());
-        response.setAccountState(account.getAccountState());
-        response.setOpeningDate(account.getOpeningDate());
+        productAdvisorUseCase.createAccount(client, account);
 
-        return response;
+        return AccountResponse.fromAccount(account);
     }
 }
