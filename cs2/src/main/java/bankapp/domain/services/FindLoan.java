@@ -2,8 +2,6 @@ package bankapp.domain.services;
 
 import java.util.List;
 
-import bankapp.domain.models.Role;
-
 import bankapp.domain.models.Client;
 import bankapp.domain.Exceptions.BusinessException;
 import bankapp.domain.ports.ClientPort;

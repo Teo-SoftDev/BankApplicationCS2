@@ -3,22 +3,25 @@ package bankapp.application.usecases;
 import bankapp.domain.Exceptions.BusinessException;
 
 import java.util.List;
-import bankapp.domain.models.Client;
 import bankapp.domain.models.Loan;
+import bankapp.domain.models.Transfer;
 import bankapp.domain.models.User;
 import bankapp.domain.services.ApproveLoan;
 import bankapp.domain.services.ApproveTransfer;
 import bankapp.domain.services.FindLoan;
+import bankapp.domain.services.FindTransfer;
 
 public class CompanySupervisorUseCase {
     private final ApproveLoan approveLoan;
     private final ApproveTransfer approveTransfer;
     private final FindLoan findLoan;
+    private final FindTransfer findTransfer;
 
-    public CompanySupervisorUseCase(ApproveLoan approveLoan, ApproveTransfer approveTransfer, FindLoan findLoan) {
+    public CompanySupervisorUseCase(ApproveLoan approveLoan, ApproveTransfer approveTransfer, FindLoan findLoan, FindTransfer findTransfer) {
         this.approveLoan = approveLoan;
         this.approveTransfer = approveTransfer;
         this.findLoan = findLoan;
+        this.findTransfer = findTransfer;
     }
 
     public void approveLoan(long loanId) throws BusinessException {
@@ -31,6 +34,10 @@ public class CompanySupervisorUseCase {
 
     public  List<Loan> findLoanByClient(String document, User user) throws BusinessException {
         return findLoan.findLoanByClient(document, user);
+    }
+
+    public  List<Transfer> findTransferByClient(String document, User user) throws BusinessException {
+        return findTransfer.findTransferByClient(document, user);
     }
 
 }

@@ -3,6 +3,9 @@ package bankapp.application.adapters.persistence;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import bankapp.domain.ports.TransferPort;
 import bankapp.domain.models.Transfer;
 import bankapp.domain.models.TransferState;
@@ -34,6 +37,14 @@ public class TransferPersistenceAdapter implements TransferPort {
         TransferEntity entity = transferRepository.findById(Long.valueOf(transferId))
             .orElseThrow(() -> new RuntimeException("Transfer not found with id: " + transferId));
         return mapToDomain(entity);
+    }
+
+    @Override
+    public List<Transfer> findTransferByClient(Client requestingClient) {
+        List<TransferEntity> entities = transferRepository.findByOriginAccountHolderDocument(requestingClient.getDocument());
+        return entities.stream()
+            .map(this::mapToDomain)
+            .collect(Collectors.toList());
     }
 
     @Override
