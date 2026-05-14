@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 public abstract class Person {
 
-    private long id;
+    private Long id;
     private String name;
     private String document;
     private String email;

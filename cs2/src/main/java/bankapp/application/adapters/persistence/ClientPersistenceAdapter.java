@@ -53,7 +53,10 @@ public class ClientPersistenceAdapter implements ClientPort {
 
     private ClientEntity mapToEntity(Client client) {
         ClientEntity entity = new ClientEntity();
-        entity.setId(client.getId());
+        //entity.setId(client.getId());
+        if (client.getId() != null && client.getId() > 0) {
+            entity.setId(client.getId());
+        }
         entity.setName(client.getName());
         entity.setDocument(client.getDocument());
         entity.setEmail(client.getEmail());
