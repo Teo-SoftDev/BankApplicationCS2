@@ -64,11 +64,11 @@ public class LoanPersistenceAdapter implements LoanPort {
     }
 
     private LoanEntity mapToEntity(Loan loan) {
-        if (loan == null) {
-            return null;
-        }
         LoanEntity entity = new LoanEntity();
-        entity.setLoanId(loan.getLoanId());
+        //entity.setLoanId(loan.getLoanId());
+        if (loan.getLoanId() == null && loan.getLoanId() > 0) {
+            entity.setLoanId(loan.getLoanId());
+        }
         entity.setProductId(loan.getProductId());
         entity.setProductName(loan.getProductName());
         entity.setProductCategory(loan.getProductCategory().toString());

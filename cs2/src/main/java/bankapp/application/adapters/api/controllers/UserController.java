@@ -24,6 +24,7 @@ public class UserController {
         User user = UserRequest.toEntity(request);
         // Note: Users are typically created through authentication service
         // This is a placeholder for basic user creation
+        userUseCase.createUser(user);
         return UserResponse.fromUser(user);
     }
 }

@@ -49,7 +49,9 @@ public class UserPersistenceAdapter implements UserPort {
 
     private UserEntity mapToEntity(User user) {
         UserEntity entity = new UserEntity();
-        entity.setId(user.getId());
+        if (user.getId() != null && user.getId() > 0) {
+            entity.setId(user.getId());
+        }
         entity.setName(user.getName());
         entity.setDocument(user.getDocument());
         entity.setEmail(user.getEmail());
