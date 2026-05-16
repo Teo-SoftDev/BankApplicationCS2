@@ -14,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransferResponse {
-    private long id;
+    private Long id;
     private String originAccountNumber;
     private String destinationAccountNumber;
     private BigDecimal amount;

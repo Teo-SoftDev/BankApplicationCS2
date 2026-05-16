@@ -14,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoanResponse {
-    private long id;
+    private Long id;
     private LoanType loanType;
     private String clientName;
     private BigDecimal requestedAmount;

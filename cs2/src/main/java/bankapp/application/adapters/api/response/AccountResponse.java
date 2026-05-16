@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountResponse {
-    private long id;
+    private Long id;
     private String accountNumber;
     private AccountType accountType;
     private String holderName;

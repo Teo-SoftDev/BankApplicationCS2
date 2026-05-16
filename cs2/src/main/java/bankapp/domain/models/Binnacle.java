@@ -13,7 +13,7 @@ import java.util.Map;
 @NoArgsConstructor
 
 public class Binnacle {
-    private long binnacleId;
+    private Long binnacleId;
     private OperationType operationType;
     private Date operationDate;
     private User userId;

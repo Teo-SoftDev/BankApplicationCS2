@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 
 public class Account extends Product{
-    private long accountId;
+    private Long accountId;
     private String accountNumber;
     private AccountType accountType;
     private Client holder;

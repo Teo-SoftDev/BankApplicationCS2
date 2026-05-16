@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Loan extends Product{
-    private long loanId;
+    private Long loanId;
     private LoanType loanType;
     private Client requestingClient;
     private BigDecimal requestedAmount;

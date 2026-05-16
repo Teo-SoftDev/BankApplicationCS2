@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserResponse {
-    private long id;
+    private Long id;
     private String document;
     private String name;
     private String lastName;
