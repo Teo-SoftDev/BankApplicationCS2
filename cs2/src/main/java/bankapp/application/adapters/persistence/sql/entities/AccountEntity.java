@@ -17,13 +17,11 @@ import lombok.AllArgsConstructor;
 public class AccountEntity {
 
     @Id
-    private String productId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long productId;
 
     @Column(nullable = false)
     private String productName;
-
-    @Column(nullable = false)
-    private String productCategory;
 
     @Column(nullable = false)
     private boolean approval;
@@ -34,7 +32,7 @@ public class AccountEntity {
     @Column(nullable = false)
     private String accountType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "holder_id", nullable = false)
     private ClientEntity holder;
 

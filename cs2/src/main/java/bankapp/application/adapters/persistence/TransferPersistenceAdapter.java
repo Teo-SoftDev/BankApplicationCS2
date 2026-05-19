@@ -88,7 +88,6 @@ public class TransferPersistenceAdapter implements TransferPort {
         AccountEntity entity = new AccountEntity();
         entity.setProductId(account.getProductId());
         entity.setProductName(account.getProductName());
-        entity.setProductCategory(account.getProductCategory().toString());
         entity.setApproval(account.isApproval());
         entity.setAccountNumber(account.getAccountNumber());
         entity.setAccountType(account.getAccountType().toString());
@@ -104,7 +103,6 @@ public class TransferPersistenceAdapter implements TransferPort {
         Account account = new Account();
         account.setProductId(entity.getProductId());
         account.setProductName(entity.getProductName());
-        account.setProductCategory(ProdCategory.valueOf(entity.getProductCategory()));
         account.setApproval(entity.isApproval());
         account.setAccountNumber(entity.getAccountNumber());
         account.setAccountType(AccountType.valueOf(entity.getAccountType()));

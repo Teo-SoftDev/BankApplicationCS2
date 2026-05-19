@@ -17,7 +17,7 @@ public class LoanEntity {
     private Long loanId;
 
     @Column(nullable = false)
-    private String productId;
+    private Long productId;
 
     @Column(nullable = false)
     private String productName;

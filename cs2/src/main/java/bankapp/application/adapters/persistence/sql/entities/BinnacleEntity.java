@@ -30,7 +30,7 @@ public class BinnacleEntity {
     private Long userId;
 
     @Column
-    private String productId;
+    private Long productId;
 
     @Lob
     @Column(columnDefinition = "TEXT")

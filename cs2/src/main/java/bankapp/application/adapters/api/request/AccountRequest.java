@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import bankapp.domain.models.AccountState;
 import bankapp.domain.models.AccountType;
 import bankapp.domain.models.Currency;
+import bankapp.domain.models.ProdCategory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AccountRequest {
     private String accountNumber;
+    private String productName;
     private AccountType accountType;
     private String clientDocument;
     private BigDecimal currentBalance;
@@ -25,10 +27,12 @@ public class AccountRequest {
     public static bankapp.domain.models.Account toEntity(AccountRequest request) {
         bankapp.domain.models.Account account = new bankapp.domain.models.Account();
         account.setAccountNumber(request.getAccountNumber());
+        account.setProductName(request.getProductName());
         account.setAccountType(request.getAccountType());
         account.setCurrentBalance(request.getCurrentBalance());
         account.setCurrencyType(request.getCurrencyType());
         account.setAccountState(request.getAccountState() != null ? request.getAccountState() : bankapp.domain.models.AccountState.ACTIVEACCOUNT);
+
         return account;
     }
 }

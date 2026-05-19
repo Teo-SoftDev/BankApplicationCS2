@@ -27,6 +27,7 @@ public class AccountController {
     public AccountResponse createAccount(@RequestBody AccountRequest request) throws Exception {
         Account account = new Account();
         account.setAccountNumber(request.getAccountNumber());
+        account.setProductName(request.getProductName());
         account.setAccountType(request.getAccountType());
         account.setCurrentBalance(request.getCurrentBalance());
         account.setCurrencyType(request.getCurrencyType());

@@ -16,9 +16,9 @@ public class CreateLoan {
 
     public void createLoan(Loan loan) throws BusinessException{
 
-        if (loanPort.existsById(loan.getLoanId())) {
-            throw new BusinessException("Loan already exists.");
-        }
+        //if (loanPort.existsById(loan.getLoanId())) {
+        //    throw new BusinessException("Loan already exists.");
+        //}
 
         if (loan.getRequestingClient() == null){
             throw new BusinessException("That client doesn't exists.");

@@ -31,12 +31,12 @@ public class LoanPersistenceAdapter implements LoanPort {
     private LoanRepository loanRepository;
 
     @Override
-    public boolean existsById(long loanId) {
+    public boolean existsById(Long loanId) {
         return loanRepository.existsById(Long.valueOf(loanId));
     }
 
     @Override
-    public Loan findById(long loanId) {
+    public Loan findById(Long loanId) {
         LoanEntity entity = loanRepository.findById(Long.valueOf(loanId))
             .orElseThrow(() -> new RuntimeException("Loan not found with id: " + loanId));
         return mapToDomain(entity);
@@ -87,10 +87,12 @@ public class LoanPersistenceAdapter implements LoanPort {
     }
 
     private Loan mapToDomain(LoanEntity entity) {
-        if (entity == null) return null;
+        if (entity == null) {
+            return null;
+        };
         Loan loan = new Loan();
         loan.setLoanId(entity.getLoanId());
-        loan.setProductId(entity.getProductId());
+        //loan.setProductId(entity.getProductId());
         loan.setProductName(entity.getProductName());
         loan.setProductCategory(ProdCategory.valueOf(entity.getProductCategory()));
         loan.setApproval(entity.isApproval());
@@ -112,7 +114,6 @@ public class LoanPersistenceAdapter implements LoanPort {
         AccountEntity entity = new AccountEntity();
         entity.setProductId(account.getProductId());
         entity.setProductName(account.getProductName());
-        entity.setProductCategory(account.getProductCategory().toString());
         entity.setApproval(account.isApproval());
         entity.setAccountNumber(account.getAccountNumber());
         entity.setAccountType(account.getAccountType().toString());
@@ -129,7 +130,6 @@ public class LoanPersistenceAdapter implements LoanPort {
         Account account = new Account();
         account.setProductId(entity.getProductId());
         account.setProductName(entity.getProductName());
-        account.setProductCategory(ProdCategory.valueOf(entity.getProductCategory()));
         account.setApproval(entity.isApproval());
         account.setAccountNumber(entity.getAccountNumber());
         account.setAccountType(AccountType.valueOf(entity.getAccountType()));

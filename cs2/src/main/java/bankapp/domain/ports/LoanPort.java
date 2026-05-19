@@ -7,9 +7,9 @@ import bankapp.domain.models.Loan;
 
 public interface LoanPort {
     // if the loan already exists
-    public boolean existsById(long loanId);
+    public boolean existsById(Long loanId);
 
-    public Loan findById(long loanId);
+    public Loan findById(Long loanId);
 
     public List<Loan> findLoanByClient(Client requestingClient);
 

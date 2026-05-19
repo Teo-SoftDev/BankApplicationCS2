@@ -18,6 +18,7 @@ import lombok.Setter;
 public class AccountResponse {
     private Long id;
     private String accountNumber;
+    private String productName;
     private AccountType accountType;
     private String holderName;
     private BigDecimal currentBalance;
@@ -29,6 +30,7 @@ public class AccountResponse {
         AccountResponse response = new AccountResponse();
         response.setId(account.getAccountId());
         response.setAccountNumber(account.getAccountNumber());
+        response.setProductName(account.getProductName());
         response.setAccountType(account.getAccountType());
         response.setCurrentBalance(account.getCurrentBalance());
         response.setCurrencyType(account.getCurrencyType());

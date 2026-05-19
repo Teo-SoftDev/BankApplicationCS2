@@ -10,10 +10,11 @@ import bankapp.domain.models.AccountType;
 import bankapp.domain.models.Client;
 import bankapp.domain.models.Role;
 import bankapp.domain.models.Currency;
-import bankapp.domain.models.ProdCategory;
 import bankapp.application.adapters.persistence.sql.repositories.AccountRepository;
 import bankapp.application.adapters.persistence.sql.entities.AccountEntity;
 import bankapp.application.adapters.persistence.sql.entities.ClientEntity;
+
+import java.time.LocalDate;
 
 @Service
 public class AccountPersistenceAdapter implements AccountPort {
@@ -59,7 +60,6 @@ public class AccountPersistenceAdapter implements AccountPort {
         AccountEntity entity = new AccountEntity();
         entity.setProductId(account.getProductId());
         entity.setProductName(account.getProductName());
-        entity.setProductCategory(account.getProductCategory().toString());
         entity.setApproval(account.isApproval());
         entity.setAccountNumber(account.getAccountNumber());
         entity.setAccountType(account.getAccountType().toString());
@@ -67,7 +67,7 @@ public class AccountPersistenceAdapter implements AccountPort {
         entity.setCurrentBalance(account.getCurrentBalance());
         entity.setCurrencyType(account.getCurrencyType().toString());
         entity.setAccountState(account.getAccountState().toString());
-        entity.setOpeningDate(account.getOpeningDate());
+        entity.setOpeningDate(LocalDate.now());
         return entity;
     }
 
@@ -79,7 +79,6 @@ public class AccountPersistenceAdapter implements AccountPort {
         Account account = new Account();
         account.setProductId(entity.getProductId());
         account.setProductName(entity.getProductName());
-        account.setProductCategory(ProdCategory.valueOf(entity.getProductCategory()));
         account.setApproval(entity.isApproval());
         account.setAccountNumber(entity.getAccountNumber());
         account.setAccountType(AccountType.valueOf(entity.getAccountType()));
