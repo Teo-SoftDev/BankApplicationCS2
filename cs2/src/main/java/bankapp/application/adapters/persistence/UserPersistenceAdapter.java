@@ -43,6 +43,20 @@ public class UserPersistenceAdapter implements UserPort {
     }
 
     @Override
+    public User findByUsername(String username) {
+        UserEntity entity = userRepository.findByUsername(username)
+            .orElseThrow(() -> new RuntimeException("User not found with username: " + username));
+        return mapToDomain(entity);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        UserEntity entity = userRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+        return mapToDomain(entity);
+    }
+
+    @Override
     public void deleteUser(String document) {
         userRepository.deleteByDocument(document);
     }

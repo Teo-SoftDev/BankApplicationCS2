@@ -15,18 +15,21 @@ import bankapp.domain.services.CreateTransfer;
 import bankapp.domain.services.FindLoan;
 import bankapp.domain.services.FindTransfer;
 import bankapp.domain.services.FindAccount;
+import bankapp.domain.services.FindUser;
 
 @Service
 public class UserUseCase {
     private final CreateUser createUser;
+    private final FindUser findUser;
     private final CreateLoan createLoan;
     private final FindLoan findLoan;
     private final CreateTransfer createTransfer;
     private final FindTransfer findTransfer;
     private final FindAccount findAccount;
 
-    public UserUseCase(CreateUser createUser, CreateLoan createLoan, FindLoan findLoan, CreateTransfer createTransfer, FindTransfer findTransfer, FindAccount findAccount) {
+    public UserUseCase(CreateUser createUser, FindUser findUser, CreateLoan createLoan, FindLoan findLoan, CreateTransfer createTransfer, FindTransfer findTransfer, FindAccount findAccount) {
         this.createUser = createUser;
+        this.findUser = findUser;
         this.createLoan = createLoan;
         this.findLoan = findLoan;
         this.createTransfer = createTransfer;
@@ -36,6 +39,18 @@ public class UserUseCase {
 
     public void createUser(User user) throws BusinessException {
         createUser.createUser(user);
+    }
+
+    public User findUserByUsername(String username) throws BusinessException {
+        return findUser.findByUsername(username);
+    }
+
+    public User findUserByDocument(String document) throws BusinessException {
+        return findUser.findByDocument(document);
+    }
+
+    public User findUserByEmail(String email) throws BusinessException {
+        return findUser.findByEmail(email);
     }
 
     public void createLoan(Client client, Loan loan) throws BusinessException {

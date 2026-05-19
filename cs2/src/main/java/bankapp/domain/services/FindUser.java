@@ -23,4 +23,24 @@ public class FindUser {
 
         return user;
     }
+
+    public User findByUsername(String username) throws BusinessException {
+        User user = userPort.findByUsername(username);
+
+        if (user == null) {
+            throw new BusinessException("There is no client with that username");
+        }
+
+        return user;
+    }
+
+    public User findByEmail(String email) throws BusinessException {
+        User user = userPort.findByEmail(email);
+
+        if (user == null) {
+            throw new BusinessException("There is no client with that email");
+        }
+
+        return user;
+    }
 }

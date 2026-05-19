@@ -12,5 +12,6 @@ public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
     boolean existsByEmail(String email);
 
     Optional<ClientEntity> findByDocument(String document);
+
     void deleteByDocument(String document);
 }

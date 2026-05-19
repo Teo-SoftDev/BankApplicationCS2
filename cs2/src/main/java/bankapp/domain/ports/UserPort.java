@@ -9,5 +9,7 @@ public interface UserPort {
     public void saveUser(User user);
     public void updateUser(User user);
     public User findByDocument(String document);
+    public User findByUsername(String username);
+    public User findByEmail(String email);
     public void deleteUser(String document);
 }

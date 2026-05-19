@@ -11,6 +11,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     boolean existsByDocument(String document);
 
     Optional<UserEntity> findByDocument(String document);
+    Optional<UserEntity> findByUsername(String username);
+    Optional<UserEntity> findByEmail(String email);
 
     void deleteByDocument(String document);
 }
