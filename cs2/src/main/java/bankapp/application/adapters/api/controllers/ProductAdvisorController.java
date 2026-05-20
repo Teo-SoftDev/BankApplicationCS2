@@ -16,6 +16,7 @@ import bankapp.domain.models.Account;
 import bankapp.domain.models.Client;
 import bankapp.domain.models.Loan;
 import bankapp.domain.services.FindClient;
+import bankapp.domain.services.FindAccount;
 
 import lombok.AllArgsConstructor;
 
@@ -26,7 +27,7 @@ public class ProductAdvisorController {
     
     private ProductAdvisorUseCase productAdvisorUseCase;
     private FindClient findClient;
-
+    private FindAccount findAccount;
     @PostMapping("/accounts")
     public AccountResponse createAccount(@RequestBody AccountRequest request) throws Exception {
         Account account = AccountRequest.toEntity(request);
@@ -51,6 +52,9 @@ public class ProductAdvisorController {
         
         // Find client by document
         Client client = findClient.findByDocument(request.getClientDocument());
+        Account account = findAccount.findByAccountNumber(request.getDestinationAccountNumber());
+
+        loan.setDestinationAccount(account);
         
         productAdvisorUseCase.createLoan(client, loan);
         return LoanResponse.fromLoan(loan);

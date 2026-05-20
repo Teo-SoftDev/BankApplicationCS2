@@ -66,10 +66,9 @@ public class LoanPersistenceAdapter implements LoanPort {
     private LoanEntity mapToEntity(Loan loan) {
         LoanEntity entity = new LoanEntity();
         //entity.setLoanId(loan.getLoanId());
-        if (loan.getLoanId() == null && loan.getLoanId() > 0) {
-            entity.setLoanId(loan.getLoanId());
-        }
-        entity.setProductId(loan.getProductId());
+        //if (loan.getLoanId() != null && loan.getLoanId() > 0) {
+        //    entity.setLoanId(loan.getLoanId());
+        //}
         entity.setProductName(loan.getProductName());
         entity.setProductCategory(loan.getProductCategory().toString());
         entity.setApproval(loan.isApproval());
@@ -92,7 +91,6 @@ public class LoanPersistenceAdapter implements LoanPort {
         };
         Loan loan = new Loan();
         loan.setLoanId(entity.getLoanId());
-        //loan.setProductId(entity.getProductId());
         loan.setProductName(entity.getProductName());
         loan.setProductCategory(ProdCategory.valueOf(entity.getProductCategory()));
         loan.setApproval(entity.isApproval());
