@@ -2,10 +2,6 @@ package bankapp.application.adapters.api.request;
 
 import java.math.BigDecimal;
 
-import bankapp.application.adapters.persistence.sql.repositories.AccountRepository;
-
-import bankapp.domain.Exceptions.BusinessException;
-import bankapp.domain.models.Account;
 import bankapp.domain.models.LoanState;
 import bankapp.domain.models.LoanType;
 import bankapp.domain.models.ProdCategory;
@@ -13,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import bankapp.domain.ports.AccountPort;
 
 @Setter
 @Getter

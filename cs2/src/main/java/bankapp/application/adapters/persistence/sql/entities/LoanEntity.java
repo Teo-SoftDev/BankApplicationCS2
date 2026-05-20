@@ -28,7 +28,7 @@ public class LoanEntity {
     @Column(nullable = false)
     private String loanType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "requesting_client_id", nullable = false)
     private ClientEntity requestingClient;
 
@@ -55,7 +55,7 @@ public class LoanEntity {
     @Column
     private Date disbursementDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "destination_account_product_id")
     private AccountEntity destinationAccount;
 }
