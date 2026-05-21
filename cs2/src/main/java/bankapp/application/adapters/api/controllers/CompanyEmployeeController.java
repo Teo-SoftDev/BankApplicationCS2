@@ -39,13 +39,13 @@ public class CompanyEmployeeController {
     }
 
     @GetMapping("/transfers/{transferId}")
-    public TransferResponse findTransferById(@PathVariable long transferId) throws Exception {
+    public TransferResponse findTransferById(@PathVariable Long transferId) throws Exception {
         var transfer = companyEmployeeUseCase.findTransferById(transferId);
         return TransferResponse.fromTransfer(transfer);
     }
 
     @GetMapping("/loans/{loanId}")
-    public LoanResponse findLoanById(@PathVariable long loanId) throws Exception {
+    public LoanResponse findLoanById(@PathVariable Long loanId) throws Exception {
         var loan = companyEmployeeUseCase.findLoanById(loanId);
         return LoanResponse.fromLoan(loan);
     }

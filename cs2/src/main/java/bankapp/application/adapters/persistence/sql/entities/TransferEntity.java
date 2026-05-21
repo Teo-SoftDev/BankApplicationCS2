@@ -16,11 +16,11 @@ public class TransferEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTransfer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "origin_account_product_id", nullable = false)
     private AccountEntity originAccount;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "destination_account_product_id", nullable = false)
     private AccountEntity destinationAccount;
 

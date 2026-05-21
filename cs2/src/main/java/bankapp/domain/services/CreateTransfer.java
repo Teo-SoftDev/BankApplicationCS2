@@ -17,10 +17,6 @@ public class CreateTransfer {
 
     public void createTransfer(Transfer transfer) throws BusinessException {
 
-        if (transferPort.existsById(transfer.getIdTransfer())){
-            throw new BusinessException("There's already a transfer with that id.");
-        }
-
         transferPort.saveTransfer(transfer);
 
     }

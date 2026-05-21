@@ -40,7 +40,7 @@ public class ProductAdvisorUseCase {
         createLoan.createLoan(loan);
     }
 
-    public Loan findLoanById(long loanId) throws Exception {
+    public Loan findLoanById(Long loanId) throws Exception {
         return findLoan.findById(loanId);
     }
 

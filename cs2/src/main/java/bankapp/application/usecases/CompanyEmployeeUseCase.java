@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 import bankapp.domain.models.Account;
 import bankapp.domain.models.Loan;
 import bankapp.domain.models.Transfer;
-
+import bankapp.domain.models.TransferState;
 import bankapp.domain.services.CreateTransfer;
 import bankapp.domain.services.FindAccount;
 import bankapp.domain.services.FindTransfer;
 import bankapp.domain.services.FindLoan;
+import java.time.LocalDate;
 
 @Service
 public class CompanyEmployeeUseCase {
@@ -31,9 +32,19 @@ public class CompanyEmployeeUseCase {
         var originAccount = findAccount.findByAccountNumber(originAccountNumber);
         var destinationAccount = findAccount.findByAccountNumber(destinationAccountNumber);
         var transfer = new bankapp.domain.models.Transfer();
+        var limit = new BigDecimal("600000");
+
         transfer.setOriginAccount(originAccount);
         transfer.setDestinationAccount(destinationAccount);
         transfer.setAmount(amount);
+        transfer.setCreationDate(LocalDate.now());
+
+        if (transfer.getAmount().compareTo(limit) > 0) {
+            transfer.setTransferState(TransferState.PENDING);
+        } else {
+            transfer.setTransferState(TransferState.COMPLETED);
+        }
+
         createTransfer.createTransfer(transfer);
     }
 

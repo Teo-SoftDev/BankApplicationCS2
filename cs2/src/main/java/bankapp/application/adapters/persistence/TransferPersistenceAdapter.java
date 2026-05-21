@@ -28,12 +28,12 @@ public class TransferPersistenceAdapter implements TransferPort {
     private TransferRepository transferRepository;
 
     @Override
-    public boolean existsById(long transferId) {
+    public boolean existsById(Long transferId) {
         return transferRepository.existsById(Long.valueOf(transferId));
     }
 
     @Override
-    public Transfer findById(long transferId) {
+    public Transfer findById(Long transferId) {
         TransferEntity entity = transferRepository.findById(Long.valueOf(transferId))
             .orElseThrow(() -> new RuntimeException("Transfer not found with id: " + transferId));
         return mapToDomain(entity);
@@ -62,7 +62,7 @@ public class TransferPersistenceAdapter implements TransferPort {
 
     private TransferEntity mapToEntity(Transfer transfer) {
         TransferEntity entity = new TransferEntity();
-        entity.setIdTransfer(transfer.getIdTransfer());
+        //entity.setIdTransfer(transfer.getIdTransfer());
         entity.setOriginAccount(mapAccountToEntity(transfer.getOriginAccount()));
         entity.setDestinationAccount(mapAccountToEntity(transfer.getDestinationAccount()));
         entity.setAmount(transfer.getAmount());
@@ -73,6 +73,9 @@ public class TransferPersistenceAdapter implements TransferPort {
     }
 
     private Transfer mapToDomain(TransferEntity entity) {
+        if (entity == null) {
+            return null;
+        }
         Transfer transfer = new Transfer();
         transfer.setIdTransfer(entity.getIdTransfer());
         transfer.setOriginAccount(mapAccountToDomain(entity.getOriginAccount()));

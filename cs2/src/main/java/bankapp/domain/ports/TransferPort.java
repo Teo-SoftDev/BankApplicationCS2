@@ -6,9 +6,9 @@ import bankapp.domain.models.Client;
 
 public interface TransferPort {
     // if the transfer already exists
-    public boolean existsById(long transferId);
+    public boolean existsById(Long transferId);
 
-    public Transfer findById(long transferId);
+    public Transfer findById(Long transferId);
 
     public List<Transfer> findTransferByClient(Client requestingClient);
 
