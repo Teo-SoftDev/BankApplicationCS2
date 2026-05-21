@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import bankapp.domain.models.AccountState;
 import bankapp.domain.models.AccountType;
 import bankapp.domain.models.Currency;
-import bankapp.domain.models.ProdCategory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

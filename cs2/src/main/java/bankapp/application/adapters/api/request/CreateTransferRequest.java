@@ -6,9 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import bankapp.domain.models.Account;
 import bankapp.domain.models.Transfer;
-import bankapp.domain.models.TransferState;
+
 
 @Setter
 @Getter
